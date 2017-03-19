@@ -1,0 +1,46 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+                <p class="pull-right"><strong>Hello,</strong> {{activeUser}}</p>
+                <a href="/" class="col-md-3 pull-left">Logout</a>
+            
+        </div>
+        <br><br>
+        <div>
+            <form>
+                <label><strong>Search:</strong></label>
+                <input type="text" ng-model="searchText"/>
+            </form>
+        </div>
+
+        <table border="1" class="panel panel-default">
+            <thead>
+                <tr class="panel-body">
+                    <td>#</td>
+                    <td>
+                        Video Name
+                    </td> 
+                    <td>
+                        Video Location
+                    </td>
+                </tr> 
+            </thead>
+            <tr class="panel-body" dir-paginate="item in Items|itemsPerPage:itemPerPage|filter:searchText">
+                <td>{{item.number}}</td>
+                <td>{{item.videolink}}</td>
+                <td>{{item.location}}</td>
+            </tr>
+        </table>
+        <div class="pull-right">
+            <form>
+                <label>Items per page:</label>
+                <select ng-model="itemPerPage" ng-options="obj.name as obj.value for obj in typeOptions">
+                    <option value=""></option>
+                </select>
+            </form>
+        </div>
+        <dir-pagination-controls></dir-pagination-controls>
+    </div>
+</div>
+
